@@ -1,8 +1,12 @@
 import json
+from os.path import isfile
 
 
 class Agent:
     def __init__(self):
+        if not isfile("secrets.json"):
+            with open("secrets.json", "w", encoding="utf-8") as f:
+                json.dump({"updated": 0, "language": "ko", "openai": "", "deepl": ""}, f)
         with open("secrets.json", "r", encoding="utf-8") as f:
             data = json.load(f)
         if data['updated'] == 0:

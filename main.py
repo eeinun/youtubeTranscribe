@@ -1,5 +1,6 @@
 import argparse
 from transcriber import transcribe
+from agent import Agent
 
 
 if __name__ == "__main__":
@@ -9,4 +10,4 @@ if __name__ == "__main__":
     parser.add_argument('-t', '--translate', action='store_true', help='영상의 주 언어가 한국어가 아니면 한국어로 번역합니다.')
 
     args = parser.parse_args()
-    transcribe(args.url, args.test)
+    transcribe(args.url, args.translate, Agent())
