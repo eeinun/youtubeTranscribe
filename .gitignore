@@ -1,4 +1,6 @@
-tmp/
-venv/
-ffmpeg.exe
-secrets.json
+/tmp/
+/venv/
+/.idea/
+/__pycache__/
+/ffmpeg.exe
+/secrets.json
