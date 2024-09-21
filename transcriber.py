@@ -27,9 +27,9 @@ def transcribe(url, trans, agent):
         response_format="verbose_json",
         language=language
     )
-    print("[transcriber] Got API response.")
+    print(f"[transcriber] Got API response. {language} --> {agent.lang}")
     segments = transcript.segments
-    if lang != "ko" and trans:
+    if language != agent.lang and trans:
         print("[transcriber] Translating subtitle.")
         batch = []
         for i in segments:

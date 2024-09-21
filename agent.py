@@ -39,7 +39,7 @@ class Agent:
             elif num == '2':
                 self.deepl = input("Input DeepL secret key: ").strip()
             elif num == '3':
-                self.lang = input("Input ISO 639 language code.\nRefer to https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes\nNote that your language can be unsupported.\n-->").strip()
+                self.lang = input("Input ISO 639 language code.\nRefer to 'Set 1' column of https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes.\nNote that your language can be unsupported.\n--> ").strip()
             elif num == '4':
                 with open("secrets.json", "r", encoding="utf-8") as f:
                     data = json.load(f)
