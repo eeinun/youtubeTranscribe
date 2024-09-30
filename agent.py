@@ -3,6 +3,27 @@ from os.path import isfile
 
 
 class Agent:
+    iso639 = { # https://community.openai.com/t/whisper-transcribe-api-verbose-json-results-format-of-language-property/646014/4
+        'afrikaans': 'af', 'arabic': 'ar', 'armenian': 'hy',
+        'azerbaijani': 'az', 'belarusian': 'be', 'bosnian': 'bs',
+        'bulgarian': 'bg', 'catalan': 'ca', 'chinese': 'zh',
+        'croatian': 'hr', 'czech': 'cs', 'danish': 'da',
+        'dutch': 'nl', 'english': 'en', 'estonian': 'et',
+        'finnish': 'fi', 'french': 'fr', 'galician': 'gl',
+        'german': 'de', 'greek': 'el', 'hebrew': 'he',
+        'hindi': 'hi', 'hungarian': 'hu', 'icelandic': 'is',
+        'indonesian': 'id', 'italian': 'it', 'japanese': 'ja',
+        'kannada': 'kn', 'kazakh': 'kk', 'korean': 'ko',
+        'latvian': 'lv', 'lithuanian': 'lt', 'macedonian': 'mk',
+        'malay': 'ms', 'maori': 'mi', 'marathi': 'mr',
+        'nepali': 'ne', 'norwegian': 'no', 'persian': 'fa',
+        'polish': 'pl', 'portuguese': 'pt', 'romanian': 'ro',
+        'russian': 'ru', 'serbian': 'sr', 'slovak': 'sk',
+        'slovenian': 'sl', 'spanish': 'es', 'swahili': 'sw',
+        'swedish': 'sv', 'tagalog': 'tl', 'tamil': 'ta',
+        'thai': 'th', 'turkish': 'tr', 'ukrainian': 'uk',
+        'urdu': 'ur', 'vietnamese': 'vi', 'welsh': 'cy'
+    }
     def __init__(self):
         if not isfile("secrets.json"):
             with open("secrets.json", "w", encoding="utf-8") as f:
