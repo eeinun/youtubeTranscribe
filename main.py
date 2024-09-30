@@ -14,7 +14,7 @@ def common_procedure(audio_segments, lang):
         segments, lang = transcribe(i[0], agent, lang)
         if lang not in agent.iso639.keys():
             try:
-                lang = agent[lang]
+                lang = agent.iso639[lang]
             except KeyError:
                 lang = None
         else:
