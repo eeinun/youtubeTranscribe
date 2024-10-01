@@ -38,9 +38,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if len(args.url) == 0 and len(args.path) == 0:
-        raise Exception("최소 1개 이상의 url이나 경로를 입력하세요.")
-
     for i in args.url:
         if re.match(r"(https://)?(www.youtube.com/watch.+|youtu.be/.+)", i) is None:
             print(f"[main] Invalid url: {i}")
