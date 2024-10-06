@@ -60,7 +60,23 @@ class Agent:
             elif num == '2':
                 self.deepl = input("Input DeepL secret key: ").strip()
             elif num == '3':
-                self.lang = input("Input ISO 639 language code.\nRefer to 'Set 1' column of https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes.\nNote that your language can be unsupported.\n--> ").strip()
+                print("Input ISO 639 language code.\n"
+                      "Refer to 'Set 1' column of https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes.\n"
+                      "To see on shell input [iso]\n"
+                      "Note that your language can be unsupported.\n")
+                print(f"Your country is currently set to {self.lang}({([None] + [x for x in self.iso639 if self.iso639[x] == self.lang])[-1]})")
+                tmp = input("--> ").strip()
+                if tmp == "iso":
+                    alpha = "a"
+                    print(f"- {alpha} ----------------")
+                    for k in self.iso639:
+                        if alpha != k[0]:
+                            alpha = k[0]
+                            print(f"- {alpha} ----------------")
+                        print(f"    {k:<12}: {self.iso639[k]}")
+                    self.lang = input("\n--> ").strip()
+                else:
+                    self.lang = tmp
             elif num == '4':
                 with open("secrets.json", "r", encoding="utf-8") as f:
                     data = json.load(f)

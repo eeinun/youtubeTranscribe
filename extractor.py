@@ -11,7 +11,7 @@ from srt_formatter import hms
 def extract_youtube(url, seg_size, maximum_size):
     ydl_opts = {
         'format': 'mp4/b.3,m4a/bestaudio/best',
-        'outtmpl': "tmp/%(id)s.%(ext)s",
+        'outtmpl': "tmp/%(title)s.%(ext)s",
         'overwrites': False,
         'paths': {
             'home': "C:\\Users\\mj008\\Documents\\youtubeTranscribe"
@@ -22,13 +22,13 @@ def extract_youtube(url, seg_size, maximum_size):
         info = ydl.extract_info(url, download=False)
         error_code = ydl.download([url])
     print(f"[extractor] Task complete with{(' error code' + error_code) if error_code else 'out any errors'}.")
-    return size_handler(info['id'], seg_size, maximum_size), info['language']
+    return size_handler(info['title'], seg_size, maximum_size), info['language']
 
 
 def size_handler(name, seg_size, maximum_size):
     print(f'[extractor] Checking file size "tmp/{name}.m4a"')
     probe_result = subprocess.run(
-        f'ffmpeg.exe -i tmp/{name}.m4a 2>&1',
+        f'ffmpeg.exe -i "tmp/{name}.m4a" 2>&1',
         shell=True,
         capture_output=True
     ).stdout.decode("utf-8")
@@ -47,7 +47,7 @@ def size_handler(name, seg_size, maximum_size):
 def extract_local(path, output_name, seg_size, maximum_size):
     print("[extractor] Extract audio from local file", path)
     subprocess.run(
-        f'ffmpeg.exe -hide_banner -v warning -stats -i {path} -q:a 0 -map a -b:a 92k "tmp/{output_name}.m4a"',
+        f'ffmpeg.exe -hide_banner -v warning -stats -i "{path}" -q:a 0 -map a -b:a 92k "tmp/{output_name}.m4a"',
         input=b"n\n"
     )
     return size_handler(output_name, seg_size, maximum_size), None
@@ -55,5 +55,5 @@ def extract_local(path, output_name, seg_size, maximum_size):
 
 def segmentation(path, segment_time=1800):
     subprocess.run(
-        f'ffmpeg.exe -hide_banner -v warning -stats -i {path} -f segment -segment_time {segment_time} -b:a 92k "{path.split(".")[0]}_%03d.m4a"'
+        f'ffmpeg.exe -hide_banner -v warning -stats -i "{path}" -f segment -segment_time {segment_time} -b:a 92k "{path.split(".")[0]}_%03d.m4a"'
     )
