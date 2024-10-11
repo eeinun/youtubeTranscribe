@@ -12,7 +12,7 @@ python main.py [-h] [-c] [-u [URL ...]] [-p [PATH ...]] [-t]
 ```
 ### Options
 - `-h`, `--help`: show this help message and exit
-- `-c`, `--config`: 개인데이터를 수정합니다.
+- `-c`, `--config`: 개인데이터를 수정합니다. `agent.py` 문단 참조.
 - `-u [URL ...]`, `--url [URL ...]`: 유튜브 영상의 주소를 입력합니다.
 - `-p [PATH ...]`, `--path [PATH ...]`: 로컬에 저장된 영상의 경로를 입력합니다.
 - `-t, --translate`: 영상의 주 언어가 설정된 언어가 아니면 번역합니다.
