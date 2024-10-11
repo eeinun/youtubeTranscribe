@@ -1,5 +1,6 @@
 ## Dependency
 - Windows 11 에서 작성되고 테스트되었음
+- 같은 디렉토리에 [`ffmpeg.exe`](https://ffmpeg.org/download.html)가 있어야 함
 - 라이브러리 의존성 ([requirement.txt](https://github.com/eeinun/youtubeTranscribe/blob/master/requirements.txt) 참조)
   - `yt-dlp`
   - `openai`
