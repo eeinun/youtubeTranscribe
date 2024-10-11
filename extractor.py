@@ -20,9 +20,13 @@ def extract_youtube(url, seg_size, maximum_size):
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
+        sanitized_name = re.sub(r'[\\/:*?"<>|？]', "", info['title']).strip()
+        if sanitized_name != info['title']:
+            print(f"[extractor] Title sanitized to {sanitized_name}")
+        ydl_opts["outtmpl"] = {"default": f"tmp/{sanitized_name}.%(ext)s"}
         error_code = ydl.download([url])
     print(f"[extractor] Task complete with{(' error code' + error_code) if error_code else 'out any errors'}.")
-    return size_handler(info['title'], seg_size, maximum_size), info['language']
+    return size_handler(sanitized_name, seg_size, maximum_size), info['language']
 
 
 def size_handler(name, seg_size, maximum_size):
