@@ -4,3 +4,6 @@
 /__pycache__/
 /ffmpeg.exe
 /secrets.json
+/test.py
+/batch.jsonl
+/summ.jsonl
