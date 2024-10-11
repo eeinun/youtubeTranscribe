@@ -3,8 +3,8 @@
 - 같은 디렉토리에 [`ffmpeg.exe`](https://ffmpeg.org/download.html)가 있어야 함
 - 라이브러리 의존성 ([requirement.txt](https://github.com/eeinun/youtubeTranscribe/blob/master/requirements.txt) 참조)
   - `yt-dlp`
-  - `openai`
-  - `deepl`
+  - `openai` : api key 필요함.
+  - `deepl` : api key 필요함.
 ## `main.py`
 ### Usage
 ```
